@@ -1,4 +1,14 @@
+#' Derive velocity and acceleration from distance
+#'
+#' @param y
+#' @param t
+#'
+#' @return data.frame
+#' @export
+#'
+#' @examples
 derive = function(y,t ){
+
       t = as.numeric(t)
       y = as.numeric(y)
 
