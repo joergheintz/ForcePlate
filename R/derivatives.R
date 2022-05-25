@@ -22,12 +22,12 @@ derivatives = function(t, y){
       dt = c(NA, dt)
 
       # calc dy/dt
-      dy = y[-c(1,2)] - y[!(y %in% utils::tail(y,2))]
+      dy = y[-c(1,2)] - y[-c(length(y), length(y)-1)]
       v = dy/(2*dt[-c(1, length(dt))])
       v = c(NA, v, NA)
 
       # calc dy/dt.dt
-      dy = y[-c(1,2)] - 2*y[-c(1, length(y))] + y[!(y %in% utils::tail(y,2))]
+      dy = y[-c(1,2)] - 2*y[-c(1, length(y))] + y[-c(length(y), length(y)-1)]
       a = dy/dt[-c(1,length(dt))]^2
       a = c(NA, a, NA)
 
