@@ -69,7 +69,7 @@ with the NA.
 
 ``` r
 # remove NA
-df = df[complete.cases(df), ]
+      df = df[complete.cases(df), ]
 
 # output
       ggplot(data = df) +  

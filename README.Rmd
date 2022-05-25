@@ -59,10 +59,10 @@ library(tibble)
 The function "derivatives" takes time and response as vectors and returns data frame. The chosen algorithm requires 3 data points to estimate velocity and acceleration the data set is therefore reduced n - 2 records. The data frame output shows head and tail for the data set with the NA.   
   
 
-```{r, fig.align = 'center', fig.height=1, fig.width=2.5}
+```{r, fig.align = 'center', fig.height=4, fig.width=10}
 
 # remove NA
-df = df[complete.cases(df), ]
+      df = df[complete.cases(df), ]
 
 # output
       ggplot(data = df) +  
