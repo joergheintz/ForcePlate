@@ -37,6 +37,7 @@ Example:
 ``` r
 library(ForcePlate)
 library(ggplot2)
+
 ## basic example code
       time = seq(0,6.28, 0.01)
       distance = sin(time)
