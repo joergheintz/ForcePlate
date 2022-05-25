@@ -1,5 +1,6 @@
 ---
 output: github_document
+always_allow_html: yes
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -18,7 +19,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of ForcePlate is to ...
+The goal of the ForcePlate package is to extract and process features to characterize of a recorded stabilogram.
 
 ## Installation
 
@@ -29,37 +30,45 @@ You can install the development version of ForcePlate from [GitHub](https://gith
 devtools::install_github("joergheintz/ForcePlate")
 ```
 
-Formula  
+## Example: Derivatives of center point of force displacement
 
-$$
+This is a basic example which shows you how to calculate a speed and acceleration. 
+$$ 
 \begin{aligned}
 \dot{x_t} &= \frac{x_{t+1} - x_{t-1}}{2 \Delta t} \\
 \ddot{x_t} &= \frac{x_{t+1} - 2 x_t + x_{t-1}}{2 \Delta t} \\
 \end{aligned}
 $$
-Example:
-
 ```{r example}
 library(ForcePlate)
 library(ggplot2)
+library(kableExtra)
+library(tibble)
+
 
 ## basic example code
-      time = seq(0,6.28, 0.01)
+      time = seq(0.01,6.28, 0.01)
       distance = sin(time)
       df = derivatives(y = distance, t = time)
-
-      df = df[complete.cases(df), ]
       
-      head(df)
-
+## output
+      as_tibble(rbind(head(df, 3), tail(df, 3)))
+      
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+The function "derivatives" takes time and response as vectors and returns data frame. The chosen algorithm requires 3 data points to estimate velocity and acceleration the data set is therefore reduced n - 2 records. The data frame output shows head and tail for the data set with the NA.   
+  
 
-```{r fig.height=2, fig.width=4 }
-ggplot(data = df) + 
-      geom_point(aes(x = t, y = y ), color = 'brown', alpha = 0.5) + 
-      geom_point(aes(x = t, y = y.), color = 'darkgrey', alpha = 0.5)  + 
-      geom_point(aes(x = t, y = y.. ), color = 'darkgreen', alpha = 0.5) 
+```{r, fig.align = 'center', fig.height=1, fig.width=2.5}
+
+# remove NA
+df = df[complete.cases(df), ]
+
+# output
+      ggplot(data = df) +  
+      geom_point(aes(x = t, y = y ), color = 'brown', alpha = 0.5, size = 0.1) + 
+      geom_point(aes(x = t, y = y.), color = 'darkgrey', alpha = 0.5, size = 0.1)  + 
+      geom_point(aes(x = t, y = y.. ), color = 'darkgreen', alpha = 0.5, size = 0.1) +
+            ylab(paste("y, y., y..")) + 
+            xlab("time")
 ```
-
