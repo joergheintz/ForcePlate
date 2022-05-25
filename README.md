@@ -73,9 +73,9 @@ with the NA.
 
 # output
       ggplot(data = df) +  
-      geom_point(aes(x = t, y = y ), color = 'brown', alpha = 0.5, size = 0.1) + 
-      geom_point(aes(x = t, y = y.), color = 'darkgrey', alpha = 0.5, size = 0.1)  + 
-      geom_point(aes(x = t, y = y.. ), color = 'darkgreen', alpha = 0.5, size = 0.1) +
+      geom_point(aes(x = t, y = y ), color = 'blue', size = 1) + 
+      geom_point(aes(x = t, y = y.), color = 'darkgreen', alpha = 1)  + 
+      geom_point(aes(x = t, y = y.. ), color = 'darkorange', alpha = 0.5, shape = 21) +
             ylab(paste("y, y., y..")) + 
             xlab("time")
 ```
