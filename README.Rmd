@@ -56,7 +56,7 @@ library(ggplot2)
 
 What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
 
-```{r fig.height=2, fig.width=3 }
+```{r fig.height=2, fig.width=4 }
 ggplot(data = df) + 
       geom_point(aes(x = t, y = y ), color = 'brown', alpha = 0.5) + 
       geom_point(aes(x = t, y = y.), color = 'darkgrey', alpha = 0.5)  + 
