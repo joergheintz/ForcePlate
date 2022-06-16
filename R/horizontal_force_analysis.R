@@ -1,12 +1,12 @@
-horizontal_force_analysis = function(data = data.frame(), cutfreq = 8, lost.records = 5, filter = TRUE, centering = TRUE, statistic = F){
+horizontal_force_analysis = function(data = "df", cutfreq = 8, lost.records = 5, filter = TRUE, centering = TRUE, statistic = F){
       var = c( "DP", "L.Fx", "L.Fy", "R.Fx", "R.Fy")
-      hrz.frcs = df[, var]
+      hrz.frcs = data[, var]
 
       # Centering, subtracting mean
       if (centering == TRUE) hrz.frcs[, var[-1]] = apply(hrz.frcs[, var[-1]],2, function(x) x - mean(x))
 
       # Butterworth filter TRUE/FALSE
-      if (filter == TRUE) { hrz.frcs[, var[-1]] = apply(hrz.frcs[, var[-1]],2, function(x) butter.fltr(x = x, cut.freq = cutfreq))
+      if (filter == TRUE) { hrz.frcs[, var[-1]] = apply(hrz.frcs[, var[-1]],2, function(x) butterworth_filter(x = x, cut.freq = cutfreq))
       hrz.frcs[hrz.frcs$DP < lost.records+1 | hrz.frcs$DP > length(hrz.frcs$DP)-(lost.records), var[-1] ] = NA
       }
 

@@ -1,4 +1,4 @@
-butter_filter = function(x, order = 4, tp = 'low', fs = 100, cut.freq = 8 ){
+butterworth_filter = function(x, order = 4, tp = 'low', fs = 100, cut.freq = 8 ){
       # order = order of butterworth filter
       # tp = low pass filter
       # fs = sample frequency
