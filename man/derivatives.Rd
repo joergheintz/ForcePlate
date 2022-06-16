@@ -18,7 +18,7 @@ data.frame
 Derivatives velocity and acceleration from distance
 }
 \examples{
-time = 1:5
-distance = (1:5)^2
+time = 1:10
+distance = (1:10)^2
 derivatives(y = distance, t = time)
 }

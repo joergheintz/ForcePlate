@@ -1,4 +1,4 @@
-horizontal_force_analysis = function(data = df, cutfreq = 8, lost.records = 5, filter = TRUE, centering = TRUE, statistic = F){
+horizontal_force_analysis = function(data = data.frame(), cutfreq = 8, lost.records = 5, filter = TRUE, centering = TRUE, statistic = F){
       var = c( "DP", "L.Fx", "L.Fy", "R.Fx", "R.Fy")
       hrz.frcs = df[, var]
 
