@@ -8,8 +8,8 @@
 #' @export
 #'
 #' @examples
-#' time = 1:5
-#' distance = (1:5)^2
+#' time = 1:10
+#' distance = (1:10)^2
 #' derivatives(y = distance, t = time)
 derivatives = function(t, y){
 
@@ -31,7 +31,8 @@ derivatives = function(t, y){
       a = dy/dt[-c(1,length(dt))]^2
       a = c(NA, a, NA)
 
-      # constract data.frame
+
+      # construct data.frame
       out = data.frame(
             t = t,
             y = y,
